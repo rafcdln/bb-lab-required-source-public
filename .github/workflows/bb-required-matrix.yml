@@ -1,0 +1,26 @@
+name: BB Required Matrix
+
+on:
+  push:
+    branches:
+      - main
+      - 'bb-lab-*'
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: none
+
+jobs:
+  required_fail:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Intentional required failure
+        run: exit 1
+
+  required_success:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Intentional required success
+        run: exit 0
